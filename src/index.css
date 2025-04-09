@@ -1,20 +1,76 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
-*{
-
-  box-sizing: border-box;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/* Keep only this theme configuration */
+@theme {
+  --breakpoints: (sm: 640px,
+      md: 768px,
+      lg: 1024px,
+      xl: 1280px,
+      "2xl": 1536px);
+  --colors: (primary: #3b82f6,
+      secondary: #9333ea,
+      accent: #fbbf24,
+      neutral: #374151,
+      info: #3abff8,
+      success: #36d399,
+      warning: #fbbd23,
+      error: #f87272);
+  --font-sizes: (xs: 0.75rem,
+      sm: 0.875rem,
+      base: 1rem,
+      lg: 1.125rem,
+      xl: 1.25rem,
+      "2xl": 1.5rem,
+      "3xl": 1.875rem,
+      "4xl": 2.25rem,
+      "5xl": 3rem,
+      "6xl": 3.75rem);
 }
 
-/* html{
-  font-size: 62.5%;
-} */
 
-@theme{
-  --color-main:#0062ff;
+@utility flex-center{
+  @apply flex items-center justify-center;
 }
 
+@layer base {
+  h1 {
+    /* Fluid Text  */
+    @apply text-[min(10vw,70px)] font-bold text-black dark:text-white;
+  }
 
+  p{
+    @apply text-gray-700 dark:text-gray-300;
+  }
 
+  input{
+    @apply border-2 border-gray-300 text-black dark:text-white dark:border-white rounded-lg p-2 text-sm;
+  }
 
+  label{
+    @apply text-gray-700 dark:text-white;
+  }
+
+  button{
+    @apply bg-black text-white dark:text-black dark:bg-white rounded-lg p-2 text-sm cursor-pointer;
+  }
+
+  form{
+    @apply flex-center flex-col gap-4
+  }
+}
+
+@layer components {
+  .box {
+    @apply  bg-white dark:bg-black;
+  }
+
+  .card {
+    @apply border-2 border-gray-300 dark:border-gray-700 rounded-lg shadow-lg p-1 sm:p-4;
+  }
+
+  .btn{
+    @apply px-4 py-2 text-sm font-medium mt-8 rounded-md text-blue-900 bg-blue-100 dark:bg-blue-800 dark:text-blue-100  transition-colors cursor-pointer; 
+  }
+}
 
